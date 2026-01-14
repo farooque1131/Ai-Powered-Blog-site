@@ -1,0 +1,35 @@
+{%extends "base.html"%}
+{%block body%}
+{% include "front-end/menu.html" %}
+<form method="POST" style="max-width: 450px; margin: 0 auto; padding: 1em;">
+    {% csrf_token %}
+
+    <div class="fields" style="margin-bottom: 1.5em;">
+        <div class="field half" style="padding-bottom: 1.5em;">
+            <input type="text" name="username" placeholder="Username" style="padding: 0.8em; font-size: 1em;">
+        </div>
+
+        <div class="field half" style="padding-bottom: 1.5em;">
+            <input type="password" name="password" placeholder="Password" style="padding: 0.8em; font-size: 1em;">
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1em;">
+
+        <a href="{% url 'register' %}"
+           style="font-size: 0.95em; text-decoration: none; color: #f2849e; font-weight: 600;">
+            Register
+        </a>
+
+        <button type="submit" style="font-size: 0.9rem;
+    text-decoration: none;
+    color: #f2849e;
+    font-weight: 600;border:none;box-shadow:none;border-bottom: dotted 1px rgba(88, 88, 88, 0.5); padding:0; width:5vw; height:5vh;">
+            Login
+        </button>
+
+    </div>
+</form>
+
+
+{% endblock %}

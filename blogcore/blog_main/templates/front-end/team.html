@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block body %}
+
+<!-- Menu -->
+{% include "front-end/menu.html" %}
+
+<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<h1>Team</h1>
+
+			<div class="image main">
+				<img src="{% static 'images/banner-image-2-1920x500.jpg' %}" class="img-fluid" alt="" />
+			</div>
+
+			<div class="container">
+				<div class="row">
+					{% for author in authors %}
+					<div class="col-sm-3 text-center">
+						<img src="{{author.profile_image.url}}" class="img-fluid" alt="" style="width:227.969px; height:119.172px;" />
+
+						<a href="{% url 'user_profile' author.user.username %}"style="text-decoration:none;color:black;margin-bottom:1rem;"><h6 class="m-n">{{ author.user.username}}</h6></a>
+					</div>
+					{%endfor%}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{%endblock%}

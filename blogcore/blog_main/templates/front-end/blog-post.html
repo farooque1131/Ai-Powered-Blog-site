@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static%}
+{%block body%}
+	<!-- Menu -->
+		{% include "front-end/menu.html" %}
+
+	<!-- Main -->
+		<div id="main">
+			
+			<div class="inner">
+				<h1>{{ blog_content.title }}</h1>
+
+				<div class="image main">
+					<img src="{{ blog_content.post_image.url}}" class="img-fluid" alt="" style="width:1008px; height:262.500px;" />
+				</div>
+				<div class="card p-3" style="background:#f8f9fa;">
+					<h3>Quick Summary</h3>
+					<p>{{ summary }}</p>
+				</div>
+				<p>{{ blog_content.description|safe }}</p>
+				<h3>Comments</h3>
+
+				{% if user.is_authenticated %}
+				<form method="post">
+					{% csrf_token %}
+					{{ form.comment }}
+					<button type="submit">Post Comment</button>
+				</form>
+				{% else %}
+				<p><a href="{% url 'login' %}">Login</a> to comment</p>
+				{% endif %}
+
+				{% for comment in comments %}
+					{% include "front-end/partials/comment.html" with comment=comment level=0 %}
+				{% empty %}
+				<p>No comments yet.</p>
+				{% endfor %}
+
+			</div>
+			
+		</div>
+		<script>
+function toggleReply(id) {
+    const form = document.getElementById(`reply-form-${id}`);
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+function toggleChildren(id) {
+    const children = document.getElementById(`children-${id}`);
+    children.style.display = children.style.display === "none" ? "block" : "none";
+}
+</script>
+
+{%endblock%}

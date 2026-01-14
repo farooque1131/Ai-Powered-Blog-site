@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block body%}
+<!-- Menu -->
+	{% include "front-end/menu.html" %}
+	<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>About Site</h1>
+
+				<div class="image main">
+					<img src="{% static 'images/banner-image-1-1920x500.jpg' %}" class="img-fluid" alt="" />
+				</div>
+
+				<p>
+				Our platform is a modern blogging space built for creators who want more than just publishing tools. We combine clean design, powerful backend systems, and AI-driven intelligence to help users create, manage, and discover meaningful content effortlessly. From rich-text editing to personalized recommendations, every feature is designed to enhance both writing and reading experiences.
+				</p>
+
+				<p>
+				We leverage advanced technologies such as natural language processing and machine learning to improve content quality and community safety. Automated content summarization helps readers quickly understand posts, while intelligent moderation systems detect abusive or harmful comments to maintain respectful discussions. With secure authentication and user-centric dashboards, creators have full control over their content and interactions.
+				</p>
+
+				<p>
+				Our goal is to build a platform that grows with its users — whether you are sharing knowledge, opinions, or creative ideas. By combining thoughtful engineering, scalable architecture, and responsible AI usage, we aim to create a reliable and engaging environment where quality content and healthy conversations come first.
+				</p>
+			</div>
+		</div>
+
+{%endblock%}			

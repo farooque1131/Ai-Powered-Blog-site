@@ -1,0 +1,33 @@
+<div style="margin-left: {{ level|default:0 }}px; margin-top:15px; border-left:2px solid #ddd; padding-left:10px;">
+    <strong>{{ comment.user.username }}</strong>
+    <p>{{ comment.comment }}</p>
+    <small>{{ comment.created_at }}</small>
+
+    {% if user.is_authenticated %}
+    <br>
+    <a href="javascript:void(0)" onclick="toggleReply('{{ comment.id }}')">Reply</a>
+    {% endif %}
+
+    {% if comment.replies.all %}
+    <br>
+    <a href="javascript:void(0)" onclick="toggleChildren('{{ comment.id }}')">
+        View Replies ({{ comment.replies.count }})
+    </a>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <form method="post" id="reply-form-{{ comment.id }}" style="display:none; margin-top:10px;">
+        {% csrf_token %}
+        <textarea name="comment" rows="2" required></textarea>
+        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+        <button type="submit">Reply</button>
+    </form>
+    {% endif %}
+
+    <!-- Nested Replies -->
+    <div id="children-{{ comment.id }}" style="display:none;">
+        {% for child in comment.replies.all %}
+            {% include "front-end/partials/comment.html" with comment=child level=level|add:30 %}
+        {% endfor %}
+    </div>
+</div>
