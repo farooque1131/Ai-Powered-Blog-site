@@ -30,8 +30,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "ai-powered-blog-site.onrender.com",
     ".onrender.com",
-    "localhost",
-    "127.0.0.1",
+    "ai-powered-blog-site",
+    "https://ai-powered-blog-site.onrender.com/"
 ]
 
 
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
