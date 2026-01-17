@@ -31,6 +31,9 @@ ALLOWED_HOSTS = [
     "ai-powered-blog-site.onrender.com",
     ".onrender.com",
     "ai-powered-blog-site",
+    "ai-powered-blog-site.com",
+    "https://ai-powered-blog-site.com",
+    "https://ai-powered-blog-site",
     "https://ai-powered-blog-site.onrender.com/"
 ]
 
