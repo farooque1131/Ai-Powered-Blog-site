@@ -172,7 +172,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is None:
             messages.error(request, "Invalid username or password")
-            return redirect("login")  
+            return render(request, "front-end/login.html")  # 🔑 KEY CHANGE 
 
         # 2️⃣ Get JWT tokens for API usage (optional but recommended)
         # token_url = request.build_absolute_uri(reverse("token_obtain_pair"))
