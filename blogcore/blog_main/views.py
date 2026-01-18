@@ -170,28 +170,29 @@ def login_user(request):
 
         # 1️⃣ Authenticate using Django session login
         user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)  # <-- now user.is_authenticated will work!
+        if user is none:
+            messages.error(request, "Invalid username or password")
+            return redirect("login")  
 
         # 2️⃣ Get JWT tokens for API usage (optional but recommended)
-        token_url = request.build_absolute_uri(reverse("token_obtain_pair"))
-        response = requests.post(token_url, data={
-            "username": username,
-            "password": password
-        })
+        # token_url = request.build_absolute_uri(reverse("token_obtain_pair"))
+        # response = requests.post(token_url, data={
+        #     "username": username,
+        #     "password": password
+        # })
 
-        if response.status_code == 200:
-            tokens = response.json()
-            request.session["access"] = tokens["access"]
-            request.session["refresh"] = tokens["refresh"]
-            request.session["username"] = username
-
-            messages.success(request, "Logged in successfully")
-            return redirect("blogs")
+        # if response.status_code == 200:
+        #     tokens = response.json()
+        #     request.session["access"] = tokens["access"]
+        #     request.session["refresh"] = tokens["refresh"]
+        #     request.session["username"] = username
+        login(request, user)
+        messages.success(request, "Logged in successfully")
+        return redirect("blogs")
 
         # If JWT fails
-        messages.error(request, "Invalid username or password")
-        return redirect("login")
+        # messages.error(request, "Invalid username or password")
+        # return redirect("login")
 
     return render(request, "front-end/login.html")
 
