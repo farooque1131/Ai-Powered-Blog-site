@@ -27,7 +27,10 @@ SECRET_KEY = 'django-insecure-n=a0vph65#f5(zzsvd(24##(q$@9&-$@nu=@+_p*)ec!9=1tk0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ai-powered-blog-site.onrender.com"]
+ALLOWED_HOSTS = ["ai-powered-blog-site.onrender.com"].
+CSRF_TRUSTED_ORIGINS = [
+    "https://ai-powered-blog-site.onrender.com",
+]
 
 
 # Application definition
