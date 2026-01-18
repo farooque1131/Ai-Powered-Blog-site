@@ -170,7 +170,7 @@ def login_user(request):
 
         # 1️⃣ Authenticate using Django session login
         user = authenticate(request, username=username, password=password)
-        if user is none:
+        if user is None:
             messages.error(request, "Invalid username or password")
             return redirect("login")  
 
