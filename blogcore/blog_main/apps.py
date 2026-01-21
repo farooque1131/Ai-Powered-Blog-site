@@ -7,4 +7,19 @@ class BlogMainConfig(AppConfig):
     
     def ready(self):
         import blog_main.signals
+        try:
+            admin_username = os.getenv("ADMIN_USERNAME", "farooque")
+            admin_password = os.getenv("ADMIN_PASSWORD", "Farooque@123")
+            admin_email = os.getenv("ADMIN_EMAIL", "admin@example.com")
 
+            if not User.objects.filter(username=admin_username).exists():
+                User.objects.create_superuser(
+                    username=admin_username,
+                    email=admin_email,
+                    password=admin_password
+                )
+                print("✅ Auto superuser created")
+
+        except Exception as e:
+            print("❌ Superuser creation skipped:", e)
+    
