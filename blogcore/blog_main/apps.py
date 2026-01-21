@@ -2,6 +2,7 @@ from django.apps import AppConfig
 from django.contrib.auth.models import User
 import os   
 
+User = get_user_model()
 class BlogMainConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'blog_main'
