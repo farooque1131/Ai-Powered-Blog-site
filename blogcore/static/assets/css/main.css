@@ -1547,6 +1547,7 @@ input, select, textarea {
 				flex-wrap: wrap;
 				box-sizing: border-box;
 				align-items: stretch;
+				flex-direction: column-reverse;
 			}
 
 				.row > * {
@@ -1601,8 +1602,8 @@ input, select, textarea {
 					margin-left: 16.6666666667%;
 				}
 
-				.row > .col-3-xsmall {
-					width: 25%;
+				.row > .col-3 {
+					width: 100%;
 				}
 
 				.row > .off-3-xsmall {
@@ -1781,6 +1782,9 @@ input, select, textarea {
 
 						.row.gtr-200.gtr-uniform > * {
 							padding-top: 2em;
+						}
+						.pers-btn{
+							width: 20vw !important;
 						}
 
 		}
