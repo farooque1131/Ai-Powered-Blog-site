@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
-    'blog_main',
+    'blog_main.apps.BlogMainConfig',
     'rest_framework',
 ]
 
